@@ -1,0 +1,11 @@
+= FreeBSD HyperFiler Installation
+
+To install HyperFiler and the dependencies from the package repository, run the
+following commands (these need to be run on the **root** account):
+
+[source,bash]
+----
+pkg install -y curl node ImageMagick7 pngcrush pngquant gifsicle webp ffmpeg py37-fonttools
+cat ./hyperfiler > /usr/local/bin/hyperfiler
+chmod +x /usr/local/bin/hyperfiler
+----

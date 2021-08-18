@@ -1,0 +1,11 @@
+= Fedora HyperFiler Installation
+
+To install HyperFiler and the dependencies from the package repository, run the
+following commands:
+
+[source,bash]
+----
+sudo dnf install -y nodejs ImageMagick pngcrush pngquant gifsicle libwebp fonttools
+cat ./hyperfiler | sudo tee /usr/local/bin/hyperfiler > /dev/null
+chmod +x /usr/local/bin/hyperfiler
+----

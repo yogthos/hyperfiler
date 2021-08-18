@@ -1,0 +1,11 @@
+= Ubuntu HyperFiler Installation
+
+To install HyperFiler and the dependencies from the package repository, run the
+following commands:
+
+[source,bash]
+----
+sudo apt-get install -y nodejs imagemagick pngcrush pngquant gifsicle libwebp6 ffmpeg fonttools mat2
+cat ./hyperfiler | sudo tee /usr/local/bin/hyperfiler > /dev/null
+chmod +x /usr/local/bin/hyperfiler
+----

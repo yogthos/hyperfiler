@@ -1,0 +1,520 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>modifiers/document/minifiers/source-code-minifiers | hyperfiler</title>
+	<meta name="description" content="Documentation for hyperfiler">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">hyperfiler</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">hyperfiler</a>
+				</li>
+				<li>
+					<a href="modifiers_document_minifiers_source_code_minifiers.html">modifiers/document/minifiers/source-code-minifiers</a>
+				</li>
+			</ul>
+			<h1>Module modifiers/document/minifiers/source-code-minifiers</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#collapseemptyattributes" class="tsd-kind-icon">collapse<wbr>Empty<wbr>Attributes</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#minifycss" class="tsd-kind-icon">minify<wbr>Css</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#minifygenerictagnames" class="tsd-kind-icon">minify<wbr>Generic<wbr>Tag<wbr>Names</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#minifyhtml" class="tsd-kind-icon">minify<wbr>Html</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#minifyjs" class="tsd-kind-icon">minify<wbr>Js</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="modifiers_document_minifiers_source_code_minifiers.html#replacecsstypeselectors" class="tsd-kind-icon">replace<wbr>Css<wbr>Type<wbr>Selectors</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="collapseemptyattributes" class="tsd-anchor"></a>
+					<h3>collapse<wbr>Empty<wbr>Attributes</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">collapse<wbr>Empty<wbr>Attributes<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L50">modifiers/document/minifiers/source-code-minifiers.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes empty attributes in all of the opening tags in the provided HTML
+									string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #008000">// The uncollapsed attributes before running the minifier:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;body&gt;</span>
+<span style="color: #008000">//     &lt;p hello=&quot;&quot;&gt;&lt;/p&gt;</span>
+<span style="color: #008000">//   &lt;/body&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+
+<span style="color: #008000">// Collapsing the empty attributes.</span>
+<span style="color: #795E26">collapseEmptyAttributes</span><span style="color: #000000">(</span><span style="color: #001080">html</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// After running the minifier, the empty HTML attributes will be collapsed:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;body&gt;</span>
+<span style="color: #008000">//     &lt;p hello&gt;&lt;/p&gt;</span>
+<span style="color: #008000">//   &lt;/body&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>html: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the html that will be minified.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the minified HTML with collapsed attributes.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="minifycss" class="tsd-anchor"></a>
+					<h3>minify<wbr>Css</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">minify<wbr>Css<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L173">modifiers/document/minifiers/source-code-minifiers.ts:173</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Minifies the CSS in all <code>&lt;style&gt;</code> tags and all inline <code>style</code> attributes in
+									the document. The implementation is from the <code>clean-css</code> library.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>command</dt>
+									<dd><p><strong><code>--minify-css</code></strong></p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #008000">// The unminified CSS before running the minifier:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;head&gt;</span>
+<span style="color: #008000">//     &lt;style&gt;</span>
+<span style="color: #008000">//       .hello {</span>
+<span style="color: #008000">//         color: #fff;</span>
+<span style="color: #008000">//       }</span>
+<span style="color: #008000">//     &lt;/style&gt;</span>
+<span style="color: #008000">//   &lt;/head&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+
+<span style="color: #008000">// Minifying the document CSS.</span>
+<span style="color: #795E26">minifyCss</span><span style="color: #000000">(</span><span style="color: #001080">document</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// After running the minifier, the CSS will be minified:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;head&gt;</span>
+<span style="color: #008000">//     &lt;style&gt;.hello{color:#fff}&lt;/style&gt;</span>
+<span style="color: #008000">//   &lt;/head&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+</code></pre>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="https://www.npmjs.com/package/clean-css">https://www.npmjs.com/package/clean-css</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>document: <span class="tsd-signature-type">Document</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the document that will be modified in place.</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the options used within the <code>clean-css</code> library.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="minifygenerictagnames" class="tsd-anchor"></a>
+					<h3>minify<wbr>Generic<wbr>Tag<wbr>Names</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">minify<wbr>Generic<wbr>Tag<wbr>Names<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L411">modifiers/document/minifiers/source-code-minifiers.ts:411</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Minifies generic tag names that have no HTML semantic meaning. Currently the
+									algorithm used to minify generic tag names minifies the following tags:</p>
+								</div>
+								<ul>
+									<li><code>&lt;div&gt;</code>  -&gt; <code>&lt;d&gt;</code></li>
+									<li><code>&lt;span&gt;</code> -&gt; <code>&lt;n&gt;</code></li>
+								</ul>
+								<dl class="tsd-comment-tags">
+									<dt>command</dt>
+									<dd><p><strong><code>--minify-generic-tag-names</code></strong></p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #008000">// The unminified HTML before running the minifier:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;body&gt;</span>
+<span style="color: #008000">//     &lt;div&gt;&lt;/div&gt;</span>
+<span style="color: #008000">//     &lt;span&gt;&lt;/div&gt;</span>
+<span style="color: #008000">//   &lt;/body&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+
+<span style="color: #008000">// Minifying the document generic tag names.</span>
+<span style="color: #795E26">minifyGenericTagNames</span><span style="color: #000000">(</span><span style="color: #001080">document</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// After running the minifier, generic tag names will be minified:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;body&gt;</span>
+<span style="color: #008000">//     &lt;d&gt;&lt;/d&gt;</span>
+<span style="color: #008000">//     &lt;n&gt;&lt;/n&gt;</span>
+<span style="color: #008000">//   &lt;/body&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>document: <span class="tsd-signature-type">Document</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the document that will be modified inplace.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="minifyhtml" class="tsd-anchor"></a>
+					<h3>minify<wbr>Html</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">minify<wbr>Html<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L126">modifiers/document/minifiers/source-code-minifiers.ts:126</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Minifies HTML. The implementation is from the <code>html-minifier</code> library.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>command</dt>
+									<dd><p><strong><code>--minify-html</code></strong></p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #008000">// The unminified HTML before running the minifier:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;head&gt;</span>
+<span style="color: #008000">//   &lt;/head&gt;</span>
+<span style="color: #008000">//   &lt;body&gt;</span>
+<span style="color: #008000">//     &lt;p&gt;Hello, World&lt;/p&gt;</span>
+<span style="color: #008000">//   &lt;/body&gt;</span>
+<span style="color: #008000">// &lt;/html&gt;</span>
+
+<span style="color: #008000">// Minifying the document HTML.</span>
+<span style="color: #795E26">minifyHtml</span><span style="color: #000000">(</span><span style="color: #001080">html</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// After running the minifier, the HTML will be minified:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hello, World&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</span>
+</code></pre>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="https://www.npmjs.com/package/html-minifier">https://www.npmjs.com/package/html-minifier</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>html: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the html that will be minified.</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the options used within the <code>html-minifier</code> library.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the minified HTML.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="minifyjs" class="tsd-anchor"></a>
+					<h3>minify<wbr>Js</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">minify<wbr>Js<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L235">modifiers/document/minifiers/source-code-minifiers.ts:235</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Minifies the JavaScript in all <code>&lt;script&gt;</code> tags, in all inline script
+										attributes in the document, and all <code>javascript:</code> protocols. The
+									implementation is from the <code>terser</code> library.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>command</dt>
+									<dd><p><strong><code>--minify-js</code></strong></p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #008000">// The unminified JS before running the minifier:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;head&gt;</span>
+<span style="color: #008000">//     &lt;script&gt;</span>
+<span style="color: #008000">//       console.log(</span>
+<span style="color: #008000">//         &#039;Hello, World&#039;</span>
+<span style="color: #008000">//       );</span>
+<span style="color: #008000">//     &lt;/script&gt;</span>
+<span style="color: #008000">//   &lt;/head&gt;</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+
+<span style="color: #008000">// Minifying the document JS.</span>
+<span style="color: #795E26">minifyJs</span><span style="color: #000000">(</span><span style="color: #001080">document</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// After running the minifier, the JS will be minified:</span>
+<span style="color: #008000">//</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+<span style="color: #008000">//   &lt;script&gt;console.log(&#039;Hello, World&#039;)&lt;/script&gt;</span>
+<span style="color: #008000">// &lt;html&gt;</span>
+</code></pre>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="https://www.npmjs.com/package/terser">https://www.npmjs.com/package/terser</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>document: <span class="tsd-signature-type">Document</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the document that will be modified in place.</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the options used within the <code>terser</code> library.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="replacecsstypeselectors" class="tsd-anchor"></a>
+					<h3>replace<wbr>Css<wbr>Type<wbr>Selectors</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">replace<wbr>Css<wbr>Type<wbr>Selectors<span class="tsd-signature-symbol">(</span>oldType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chowderman/hyperfiler/blob/5cc0569/src/lib/modifiers/document/minifiers/source-code-minifiers.ts#L347">modifiers/document/minifiers/source-code-minifiers.ts:347</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Replaces a specified Type selector in all inline stylesheets in the
+									document.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>oldType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the old type selector.</p>
+									</div>
+								</li>
+								<li>
+									<h5>newType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the new type selector.</p>
+									</div>
+								</li>
+								<li>
+									<h5>document: <span class="tsd-signature-type">Document</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the document that will be modified in place.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html">modifiers/document/minifiers/source-<wbr>code-<wbr>minifiers</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#collapseemptyattributes" class="tsd-kind-icon">collapse<wbr>Empty<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#minifycss" class="tsd-kind-icon">minify<wbr>Css</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#minifygenerictagnames" class="tsd-kind-icon">minify<wbr>Generic<wbr>Tag<wbr>Names</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#minifyhtml" class="tsd-kind-icon">minify<wbr>Html</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#minifyjs" class="tsd-kind-icon">minify<wbr>Js</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="modifiers_document_minifiers_source_code_minifiers.html#replacecsstypeselectors" class="tsd-kind-icon">replace<wbr>Css<wbr>Type<wbr>Selectors</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

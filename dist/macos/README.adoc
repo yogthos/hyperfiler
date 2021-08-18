@@ -1,0 +1,11 @@
+= Mac HyperFiler Installation
+
+For installation on MacOSX, first ensure that you have Node.JS and NPM
+installed. Follow the instructions for installing Node.JS and NPM
+link:https://nodejs.org/en/download/[here]. Once installed, run the following
+command to install HyperFiler:
+
+[source,bash]
+----
+npm install hyperfiler -g
+----

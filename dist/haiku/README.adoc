@@ -1,0 +1,11 @@
+= HaikuOS HyperFiler Installation
+
+To install HyperFiler and the dependencies from the package repository, run the
+following commands (these need to be run on the **root** account):
+
+[source,bash]
+----
+pkgman install -y nodejs imagemagick pngcrush pngquant gifsicle libwebp ffmpeg fonttools
+cat ./hyperfiler > /boot/system/non-packaged/bin/hyperfiler
+chmod +x /boot/system/non-packaged/bin/hyperfiler
+----
