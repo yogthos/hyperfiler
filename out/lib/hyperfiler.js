@@ -544,16 +544,26 @@ class HyperFiler {
         // Selecting the resource type that will be added to the resource cache.
         const type = resource_1.ResourceType.FAVICON;
         // Caching all favicon URLs in the `<link>` tags.
-        const faviconElements = [
+        const faviconLinkElements = [
             ...this.document.querySelectorAll('link[rel="icon"][href]'),
             ...this.document.querySelectorAll('link[rel="shortcut icon"][href]'),
+            ...this.document.querySelectorAll('link[rel="mask-icon"][href]'),
             ...this.document.querySelectorAll('link[rel="apple-touch-icon"][href]'),
             ...this.document.querySelectorAll('link[rel="apple-touch-startup-image"][href]'),
             ...this.document.querySelectorAll('link[rel="apple-touch-icon-precomposed"][href]'),
         ];
         // Creating a new resource for each of the favicons found.
-        for (const faviconElement of faviconElements) {
-            const url = faviconElement.getAttribute('href');
+        for (const faviconLinkElement of faviconLinkElements) {
+            const url = faviconLinkElement.getAttribute('href');
+            this.createCacheResource(url, type);
+        }
+        // Caching all favicon URLs in the `<meta>` tags.
+        const faviconMetaElements = [
+            ...this.document.querySelectorAll('meta[name="msapplication-TileImage"][content]'),
+        ];
+        // Creating a new resource for each of the favicons found.
+        for (const faviconMetaElement of faviconMetaElements) {
+            const url = faviconMetaElement.getAttribute('content');
             this.createCacheResource(url, type);
         }
     }
@@ -873,19 +883,32 @@ class HyperFiler {
             yield this.fetchCachedResourceByType(resource_1.ResourceType.IMAGE);
             // For each favicon `<link>` element, inlining the `src` attribute icon
             // as a base64 encoded image.
-            const faviconElements = [
+            const faviconLinkElements = [
                 ...this.document.querySelectorAll('link[rel="icon"][href]'),
                 ...this.document.querySelectorAll('link[rel="shortcut icon"][href]'),
+                ...this.document.querySelectorAll('link[rel="mask-icon"][href]'),
                 ...this.document.querySelectorAll('link[rel="apple-touch-icon"][href]'),
                 ...this.document.querySelectorAll('link[rel="apple-touch-startup-image"][href]'),
                 ...this.document.querySelectorAll('link[rel="apple-touch-icon-precomposed"][href]'),
             ];
-            for (const faviconElement of faviconElements) {
+            for (const faviconLinkElement of faviconLinkElements) {
                 // Inlining the base64 encoded favicon into the `src` attribute.
-                const url = faviconElement.getAttribute('href');
+                const url = faviconLinkElement.getAttribute('href');
                 const resource = this.getResourceFromCache(url);
                 const base64Resource = resource.toBase64();
-                faviconElement.setAttribute('href', base64Resource);
+                faviconLinkElement.setAttribute('href', base64Resource);
+            }
+            // For each favicon `<meta>` element, inlining the `content` attribute icon
+            // as a base64 encoded image.
+            const faviconMetaElements = [
+                ...this.document.querySelectorAll('meta[name="msapplication-TileImage"][content]'),
+            ];
+            for (const faviconMetaElement of faviconMetaElements) {
+                // Inlining the base64 encoded favicon into the `content` attribute.
+                const url = faviconMetaElement.getAttribute('content');
+                const resource = this.getResourceFromCache(url);
+                const base64Resource = resource.toBase64();
+                faviconMetaElement.setAttribute('content', base64Resource);
             }
         });
     }

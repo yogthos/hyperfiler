@@ -688,7 +688,6 @@ const beforeFinalHtmlCreationPlugins: HyperFilerPlugin[] = [
 ----
 
 
-
 Below are all of the current stages available that plugins can be added to:
 
 * **beforeInitialFetch**
