@@ -14,6 +14,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../dependencies");
 /**
  * Removes metadata from the provided binary file using Mat2.
@@ -31,8 +32,8 @@ function removeResourceMetadata(bytes, fileExtension) {
     }
     // Creating file paths for the temporary file and writing the file to the
     // temporary directory.
-    const tempFilePath = path.join(tempDir, `temp.${fileExtension}`);
-    const cleanedFilePath = path.join(tempDir, `temp.cleaned.${fileExtension}`);
+    const tempFilePath = path.join(tempDir, `temp${fileExtension}`);
+    const cleanedFilePath = path.join(tempDir, `temp.cleaned${fileExtension}`);
     fs.writeFileSync(tempFilePath, bytes);
     // Calling the Mat2 command to remove the metadata from the file in the
     // temporary directory.
@@ -44,12 +45,12 @@ function removeResourceMetadata(bytes, fileExtension) {
     if (mat2Process.status === 0) {
         const fileBuffer = fs.readFileSync(cleanedFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return fileBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.removeResourceMetadata = removeResourceMetadata;

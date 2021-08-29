@@ -20,6 +20,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../../dependencies");
 /**
  * Grayscales an image using ImageMagick.
@@ -54,12 +55,12 @@ function grayscaleImage(bytes, extension) {
         // Getting the grayscaled image buffer.
         const grayscaledImageBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return grayscaledImageBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.grayscaleImage = grayscaleImage;

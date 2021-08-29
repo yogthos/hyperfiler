@@ -11,6 +11,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import { SpawnSyncReturns } from 'child_process';
+import * as rimraf from 'rimraf';
 import * as dependencies from '../../../dependencies';
 import { Resource, ResourceCache } from '../../../resource';
 import { FontExtension } from './font-extensions';
@@ -63,14 +64,14 @@ export function convertTtfAndOtfToWoff2(
     const convertedFontBuffer: Buffer = fs.readFileSync(tempOutputFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return convertedFontBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }
@@ -149,14 +150,14 @@ export function subsetFont(
     const subsettedFontBuffer: Buffer = fs.readFileSync(tempOutputFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return subsettedFontBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }

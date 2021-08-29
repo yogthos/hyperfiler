@@ -12,6 +12,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../dependencies");
 /**
  * Possibly minifies an MP4 video buffer. This function minifies the MP4 file
@@ -56,12 +57,12 @@ function minifyMp4(bytes) {
     if (ffmpegProcess.status === 0) {
         const videoBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return videoBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.minifyMp4 = minifyMp4;
@@ -108,12 +109,12 @@ function minifyWebm(bytes) {
     if (ffmpegProcess.status === 0) {
         const videoBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return videoBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.minifyWebm = minifyWebm;

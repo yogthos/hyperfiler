@@ -24,6 +24,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const genericImageMinifiers = require("./generic-image-minifiers");
 const dependencies = require("../../../../dependencies");
 const image_extensions_1 = require("../image-extensions");
@@ -72,13 +73,13 @@ function optimizePng(bytes) {
             // Getting the optimized PNG buffer.
             const pngquantAndCrushedImageBuffer = fs.readFileSync(tempQuantCrushedOutputFilePath);
             // Deleting the temporary files and directory.
-            fs.rmdirSync(tempDir, { recursive: true });
+            rimraf.sync(tempDir);
             return pngquantAndCrushedImageBuffer;
         }
     }
     // If the either process failed, simply delete the temporary files and
     // directory to clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.optimizePng = optimizePng;

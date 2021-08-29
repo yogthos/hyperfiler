@@ -13,6 +13,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import { SpawnSyncReturns } from 'child_process';
+import * as rimraf from 'rimraf';
 import * as Jimp from 'jimp/dist';
 import * as gifFrames from 'gif-frames';
 import * as dependencies from '../../../../dependencies';
@@ -115,14 +116,14 @@ export function optimizeGif(
     const gifsicleImageBuffer: Buffer = fs.readFileSync(tempOutputFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return gifsicleImageBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }
@@ -176,14 +177,14 @@ export function optimizeGifToWebp(
     const webpImageBuffer: Buffer = fs.readFileSync(tempOutputFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return webpImageBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }

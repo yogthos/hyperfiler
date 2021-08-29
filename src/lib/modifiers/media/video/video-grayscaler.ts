@@ -11,6 +11,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import { SpawnSyncReturns } from 'child_process';
+import * as rimraf from 'rimraf';
 import * as dependencies from '../../../dependencies';
 import { Resource, ResourceCache } from '../../../resource';
 
@@ -58,14 +59,14 @@ export function grayscaleVideo(
     const videoBuffer: Buffer = fs.readFileSync(tempOutputFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return videoBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }

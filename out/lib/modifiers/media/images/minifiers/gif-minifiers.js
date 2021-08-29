@@ -23,6 +23,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const Jimp = require("jimp/dist");
 const gifFrames = require("gif-frames");
 const dependencies = require("../../../../dependencies");
@@ -107,12 +108,12 @@ function optimizeGif(bytes) {
         // Getting the optimized GIF buffer.
         const gifsicleImageBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return gifsicleImageBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.optimizeGif = optimizeGif;
@@ -153,12 +154,12 @@ function optimizeGifToWebp(bytes, webpQuality) {
         // Getting the converted WEBP buffer.
         const webpImageBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return webpImageBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.optimizeGifToWebp = optimizeGifToWebp;

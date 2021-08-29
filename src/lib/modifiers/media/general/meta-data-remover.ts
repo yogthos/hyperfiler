@@ -14,6 +14,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import { SpawnSyncReturns } from 'child_process';
+import * as rimraf from 'rimraf';
 import * as dependencies from '../../../dependencies';
 import { Resource, ResourceCache } from '../../../resource';
 
@@ -38,8 +39,8 @@ export function removeResourceMetadata(
 
   // Creating file paths for the temporary file and writing the file to the
   // temporary directory.
-  const tempFilePath: string = path.join(tempDir, `temp.${fileExtension}`);
-  const cleanedFilePath: string = path.join(tempDir, `temp.cleaned.${fileExtension}`);
+  const tempFilePath: string = path.join(tempDir, `temp${fileExtension}`);
+  const cleanedFilePath: string = path.join(tempDir, `temp.cleaned${fileExtension}`);
 
   fs.writeFileSync(tempFilePath, bytes);
 
@@ -58,14 +59,14 @@ export function removeResourceMetadata(
     const fileBuffer: Buffer = fs.readFileSync(cleanedFilePath);
 
     // Deleting the temporary files and directory.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
 
     return fileBuffer;
   }
 
   // If the process failed, simply delete the temporary files and directory to
   // clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }

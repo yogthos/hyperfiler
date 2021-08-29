@@ -15,6 +15,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import { SpawnSyncReturns } from 'child_process';
+import * as rimraf from 'rimraf';
 import * as genericImageMinifiers from './generic-image-minifiers';
 import * as dependencies from '../../../../dependencies';
 import { ImageExtension } from '../image-extensions';
@@ -89,7 +90,7 @@ export function optimizePng(
       );
 
       // Deleting the temporary files and directory.
-      fs.rmdirSync(tempDir, { recursive: true });
+      rimraf.sync(tempDir);
 
       return pngquantAndCrushedImageBuffer;
     }
@@ -97,7 +98,7 @@ export function optimizePng(
 
   // If the either process failed, simply delete the temporary files and
   // directory to clean up the resources, and return the original buffer.
-  fs.rmdirSync(tempDir, { recursive: true });
+  rimraf.sync(tempDir);
 
   return bytes;
 }

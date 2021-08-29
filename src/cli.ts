@@ -21,7 +21,7 @@ if (require.main === module) {
     const program = new Command();
 
     // Setting the version number.
-    program.version('1.1.3', '-v, --version');
+    program.version('1.1.4', '-v, --version');
 
     // Adding all of the arguments to the CLI.
     program

@@ -12,6 +12,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 /**
  * Converts an image from one image type to another image type using
  * ImageMagick. All image types supported by ImageMagick are able to be
@@ -59,12 +60,12 @@ function convertImage(bytes, quality, inputExtension, outputExtension) {
         // Getting the converted image buffer.
         const convertedImageBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return convertedImageBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.convertImage = convertImage;

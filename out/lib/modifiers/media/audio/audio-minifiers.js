@@ -12,6 +12,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../dependencies");
 /**
  * Possibly minifies an MP3 audio buffer. This function minifies the MP3 file
@@ -48,12 +49,12 @@ function minifyMp3(bytes) {
     if (ffmpegProcess.status === 0) {
         const audioBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return audioBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.minifyMp3 = minifyMp3;

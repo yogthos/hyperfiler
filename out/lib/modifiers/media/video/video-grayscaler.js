@@ -12,6 +12,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../dependencies");
 /**
  * Possibly converts a video to grayscale. Conversion is done through FFMPEG,
@@ -45,12 +46,12 @@ function grayscaleVideo(bytes, extension) {
     if (ffmpegProcess.status === 0) {
         const videoBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return videoBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.grayscaleVideo = grayscaleVideo;

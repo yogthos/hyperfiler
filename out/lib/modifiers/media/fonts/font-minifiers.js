@@ -12,6 +12,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const childProcess = require("child_process");
+const rimraf = require("rimraf");
 const dependencies = require("../../../dependencies");
 const font_extensions_1 = require("./font-extensions");
 /**
@@ -50,12 +51,12 @@ function convertTtfAndOtfToWoff2(bytes, inputExtension) {
         // Getting the converted font buffer.
         const convertedFontBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return convertedFontBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.convertTtfAndOtfToWoff2 = convertTtfAndOtfToWoff2;
@@ -110,12 +111,12 @@ function subsetFont(bytes, inputExtension, document) {
         // Getting the subsetted font buffer.
         const subsettedFontBuffer = fs.readFileSync(tempOutputFilePath);
         // Deleting the temporary files and directory.
-        fs.rmdirSync(tempDir, { recursive: true });
+        rimraf.sync(tempDir);
         return subsettedFontBuffer;
     }
     // If the process failed, simply delete the temporary files and directory to
     // clean up the resources, and return the original buffer.
-    fs.rmdirSync(tempDir, { recursive: true });
+    rimraf.sync(tempDir);
     return bytes;
 }
 exports.subsetFont = subsetFont;
