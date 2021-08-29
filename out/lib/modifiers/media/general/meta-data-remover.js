@@ -32,17 +32,17 @@ function removeResourceMetadata(bytes, fileExtension) {
     // Creating file paths for the temporary file and writing the file to the
     // temporary directory.
     const tempFilePath = path.join(tempDir, `temp.${fileExtension}`);
+    const cleanedFilePath = path.join(tempDir, `temp.cleaned.${fileExtension}`);
     fs.writeFileSync(tempFilePath, bytes);
     // Calling the Mat2 command to remove the metadata from the file in the
     // temporary directory.
     const mat2Process = childProcess.spawnSync('mat2', [
-        '--inplace',
         tempFilePath,
     ]);
     // If the metadata removal was successful, reading the file to get the
     // buffer, and then deleting the temporary files and directories.
     if (mat2Process.status === 0) {
-        const fileBuffer = fs.readFileSync(tempFilePath);
+        const fileBuffer = fs.readFileSync(cleanedFilePath);
         // Deleting the temporary files and directory.
         fs.rmdirSync(tempDir, { recursive: true });
         return fileBuffer;

@@ -21,7 +21,7 @@ if (require.main === module) {
     const program = new Command();
 
     // Setting the version number.
-    program.version('1.1.2', '-v, --version');
+    program.version('1.1.3', '-v, --version');
 
     // Adding all of the arguments to the CLI.
     program
@@ -467,7 +467,7 @@ if (require.main === module) {
 
       // Transport options.
       .option(
-        '--headers',
+        '--headers <type>',
         'A pipe-delimited string of HTTP headers used in the requests. For '
       + 'example, `User-Agent:custom-ua|Accept-Language:en-US` will pass '
       + '`User-Agent` with the value `custom-ua` and `Accept-Language` with '
@@ -481,7 +481,7 @@ if (require.main === module) {
       + 'resources.',
       )
       .option(
-        '--socks-proxy-agent-string',
+        '--socks-proxy-agent-string <type>',
         'Specifies the socks proxy agent when using the Tor transport. The '
       + 'default value uses an open instance of the Tor browser (using the '
       + '`socks5h://localhost:9150` agent).',

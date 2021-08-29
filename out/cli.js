@@ -24,7 +24,7 @@ if (require.main === module) {
         // Creating the CLI program.
         const program = new commander_1.Command();
         // Setting the version number.
-        program.version('1.1.2', '-v, --version');
+        program.version('1.1.3', '-v, --version');
         // Adding all of the arguments to the CLI.
         program
             .arguments('<url>')
@@ -183,7 +183,7 @@ if (require.main === module) {
             .option('--inject-compiled-page', 'Injects a compiled version of the HTML page as a self-extracting '
             + 'script into the HTML page.')
             // Transport options.
-            .option('--headers', 'A pipe-delimited string of HTTP headers used in the requests. For '
+            .option('--headers <type>', 'A pipe-delimited string of HTTP headers used in the requests. For '
             + 'example, `User-Agent:custom-ua|Accept-Language:en-US` will pass '
             + '`User-Agent` with the value `custom-ua` and `Accept-Language` with '
             + 'the value `en-US` as headers in the request. When used '
@@ -191,7 +191,7 @@ if (require.main === module) {
             + '{ [header: string]: string } can be used.')
             .option('--tor-transport', 'Uses the Tor network when fetching the HTML page and all the page '
             + 'resources.')
-            .option('--socks-proxy-agent-string', 'Specifies the socks proxy agent when using the Tor transport. The '
+            .option('--socks-proxy-agent-string <type>', 'Specifies the socks proxy agent when using the Tor transport. The '
             + 'default value uses an open instance of the Tor browser (using the '
             + '`socks5h://localhost:9150` agent).')
             .option('--headless-browser-transport', 'Uses a headless browser when fetching the HTML page and all the page '
