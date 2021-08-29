@@ -6,6 +6,7 @@
  * @license AGPLv3
  */
 /// <reference types="node" />
+import { AxiosResponse } from 'axios';
 /**
  * Resolves a URL to an absolute URL given the base URL and protocol.
  *
@@ -81,4 +82,13 @@ export declare function parseSrcsetUrls(srcset: string): string[];
  * @see https://stackoverflow.com/questions/6088972/get-doctype-of-an-html-as-string-with-javascript
  */
 export declare function getDoctype(document: Document): string;
+/**
+ * Decompresses an axios response data if the response data is brotli
+ * compressed. If not brotli compressed, returns the original response data
+ * (as axios by default handles gzip and deflate compression formats).
+ *
+ * @param response an axios response.
+ * @returns the decompressed buffer from the response.
+ */
+export declare function decompressResponse(response: AxiosResponse): Buffer;
 //# sourceMappingURL=utilities.d.ts.map

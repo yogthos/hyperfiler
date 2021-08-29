@@ -10,7 +10,9 @@
 
 import * as path from 'path';
 import * as FileType from 'file-type';
+import * as decompress from 'brotli/decompress';
 import { FileTypeResult } from 'file-type';
+import { AxiosResponse } from 'axios';
 
 /**
  * Resolves a URL to an absolute URL given the base URL and protocol.
@@ -552,4 +554,36 @@ export function getDoctype(
   }
 
   return '';
+}
+
+/**
+ * Decompresses an axios response data if the response data is brotli
+ * compressed. If not brotli compressed, returns the original response data
+ * (as axios by default handles gzip and deflate compression formats).
+ *
+ * @param response an axios response.
+ * @returns the decompressed buffer from the response.
+ */
+export function decompressResponse(
+  response: AxiosResponse,
+) : Buffer {
+  // Getting the content encoding from the response headers.
+  const contentEncoding: string = response.headers['content-encoding'];
+
+  // Checking if the response is brotli compressed.
+  const isBrotliResponse: boolean = contentEncoding === 'br';
+
+  // Getting the buffer from the response.
+  const bytes: Buffer = Buffer.from(response.data);
+
+  // If the response is brotli compressed, decompressing it and returning the
+  // decompressed buffer. If not brotli compressed, returning the original
+  // buffer from the response.
+  if (isBrotliResponse === true) {
+    const brotliDecompressedBuffer: Buffer = Buffer.from(decompress(bytes));
+
+    return brotliDecompressedBuffer;
+  }
+
+  return bytes;
 }

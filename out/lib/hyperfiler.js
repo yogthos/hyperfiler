@@ -777,10 +777,18 @@ class HyperFiler {
                 // Getting the resource and the script.
                 const url = scriptElement.getAttribute('src');
                 const resource = this.getResourceFromCache(url);
-                const script = resource.bytes.toString();
-                // Inlining the script and removing the `src` attribute.
-                scriptElement.removeAttribute('src');
-                scriptElement.innerHTML = script;
+                const status = resource.status;
+                // If the resource fetch failed, skipping the inlining and removing the
+                // script element.
+                if (status === true) {
+                    // Inlining the script and removing the `src` attribute.
+                    const script = resource.bytes.toString();
+                    scriptElement.removeAttribute('src');
+                    scriptElement.innerHTML = script;
+                }
+                else {
+                    scriptElement.remove();
+                }
             }
         });
     }

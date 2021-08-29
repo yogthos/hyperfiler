@@ -15,6 +15,29 @@ import { fetchTorResource } from './tor-transport';
 import { fetchDataResource } from './data-transport';
 
 /**
+ * Creates a shortened version of a URL for logging purposes.
+ * 
+ * @param url the URL that may be shortened.
+ * @returns either a shortened URL or the original URL if it is already short.
+ */
+function createShortenedUrl(
+  url: string,
+) : string {
+  // Checking the URL is too long (often the case with data URIs).
+  const isUrlLong: boolean = url.length >= 300;
+
+  // Creating a shortened URL if it is too long.
+  if (isUrlLong) {
+    const shortenedUrl: string = `${url.slice(0, 300)}...`;
+
+    return shortenedUrl;
+  }
+
+  // Or returning the original URL if it is not too long.
+  return url;
+}
+
+/**
  * Fetches a single resource at a given URL using the protocol specified.
  *
  * @param absoluteUrl the absolute URL of the resource that will be fetched.
@@ -78,17 +101,21 @@ export async function fetchResource(
     }
   }
 
+  // Creating a URL that will be displayed by the logger, shortening the
+  // absolute URL if it is too long for logging purposes.
+  const displayUrl: string = createShortenedUrl(absoluteUrl);
+
   // Logging the result of the fetch to the logger.
   if (response.status === true) {
     logger.log(
       'ok',
-      `Fetched (${response.statusCode}) => ${absoluteUrl}`,
+      `Fetched (${response.statusCode}) => ${displayUrl}`,
       { depth: 1 },
     );
   } else {
     logger.log(
       'error',
-      `Failed  (${response.statusCode}) => ${absoluteUrl}`,
+      `Failed  (${response.statusCode}) => ${displayUrl}`,
       { depth: 1 },
     );
   }

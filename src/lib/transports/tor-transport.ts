@@ -9,6 +9,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ResourceResponse } from '../resource';
+import * as utilities from '../utilities';
 
 /**
  * Fetches a single resource at the given HTTP(S) URL through the Tor network.
@@ -27,16 +28,6 @@ export async function fetchTorResource(
   headers: { [header: string]: string },
   socksProxyAgentString: string = 'socks5h://localhost:9150',
 ) : Promise<ResourceResponse> {
-  // Setting default headers found in the Tor Browser as of 2021-04 if these
-  // headers are not specified.
-  if (!headers['User-Agent']) {
-    headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0';
-  }
-
-  if (!headers['Accept-Language']) {
-    headers['Accept-Language'] = 'en-US,en;q=0.5';
-  }
-
   // Creating a socks5 proxy agent to proxy through the Tor network.
   const socksProxyAgent: SocksProxyAgent = new SocksProxyAgent(
     socksProxyAgentString,
@@ -73,7 +64,7 @@ export async function fetchTorResource(
 
   // If bytes were fetched, returning the fetched bytes.
   if (status === true) {
-    const bytes: Buffer = Buffer.from(response.data);
+    const bytes: Buffer = utilities.decompressResponse(response);
 
     return {
       bytes,

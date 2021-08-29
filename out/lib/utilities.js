@@ -16,10 +16,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDoctype = exports.parseSrcsetUrls = exports.getExtensionFromMimeType = exports.determineMimeType = exports.getBaseUrl = exports.getProtocolFromUrl = exports.hasProtocol = exports.resolveAbsoluteUrl = void 0;
+exports.decompressResponse = exports.getDoctype = exports.parseSrcsetUrls = exports.getExtensionFromMimeType = exports.determineMimeType = exports.getBaseUrl = exports.getProtocolFromUrl = exports.hasProtocol = exports.resolveAbsoluteUrl = void 0;
 /* eslint-disable no-multi-spaces */
 const path = require("path");
 const FileType = require("file-type");
+const decompress = require("brotli/decompress");
 /**
  * Resolves a URL to an absolute URL given the base URL and protocol.
  *
@@ -812,4 +813,29 @@ function getDoctype(document) {
     return '';
 }
 exports.getDoctype = getDoctype;
+/**
+ * Decompresses an axios response data if the response data is brotli
+ * compressed. If not brotli compressed, returns the original response data
+ * (as axios by default handles gzip and deflate compression formats).
+ *
+ * @param response an axios response.
+ * @returns the decompressed buffer from the response.
+ */
+function decompressResponse(response) {
+    // Getting the content encoding from the response headers.
+    const contentEncoding = response.headers['content-encoding'];
+    // Checking if the response is brotli compressed.
+    const isBrotliResponse = contentEncoding === 'br';
+    // Getting the buffer from the response.
+    const bytes = Buffer.from(response.data);
+    // If the response is brotli compressed, decompressing it and returning the
+    // decompressed buffer. If not brotli compressed, returning the original
+    // buffer from the response.
+    if (isBrotliResponse === true) {
+        const brotliDecompressedBuffer = Buffer.from(decompress(bytes));
+        return brotliDecompressedBuffer;
+    }
+    return bytes;
+}
+exports.decompressResponse = decompressResponse;
 //# sourceMappingURL=utilities.js.map

@@ -18,6 +18,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchHttpResource = void 0;
 const axios_1 = require("axios");
+const utilities = require("../utilities");
 /**
  * Fetches a single resource at the given HTTP(S) URL.
  *
@@ -52,7 +53,7 @@ function fetchHttpResource(absoluteUrl, headers) {
         const status = statusCode >= 200 && statusCode < 300;
         // If bytes were fetched, returning the fetched bytes.
         if (status === true) {
-            const bytes = Buffer.from(response.data);
+            const bytes = utilities.decompressResponse(response);
             return {
                 bytes,
                 status,

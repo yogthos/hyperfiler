@@ -8,6 +8,7 @@
 
 import axios, { AxiosResponse } from 'axios';
 import { ResourceResponse } from '../resource';
+import * as utilities from '../utilities';
 
 /**
  * Fetches a single resource at the given HTTP(S) URL.
@@ -49,7 +50,7 @@ export async function fetchHttpResource(
 
   // If bytes were fetched, returning the fetched bytes.
   if (status === true) {
-    const bytes: Buffer = Buffer.from(response.data);
+    const bytes: Buffer = utilities.decompressResponse(response);
 
     return {
       bytes,

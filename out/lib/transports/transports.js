@@ -24,6 +24,23 @@ const headless_browser_transport_1 = require("./headless-browser-transport");
 const tor_transport_1 = require("./tor-transport");
 const data_transport_1 = require("./data-transport");
 /**
+ * Creates a shortened version of a URL for logging purposes.
+ *
+ * @param url the URL that may be shortened.
+ * @returns either a shortened URL or the original URL if it is already short.
+ */
+function createShortenedUrl(url) {
+    // Checking the URL is too long (often the case with data URIs).
+    const isUrlLong = url.length >= 300;
+    // Creating a shortened URL if it is too long.
+    if (isUrlLong) {
+        const shortenedUrl = `${url.slice(0, 300)}...`;
+        return shortenedUrl;
+    }
+    // Or returning the original URL if it is not too long.
+    return url;
+}
+/**
  * Fetches a single resource at a given URL using the protocol specified.
  *
  * @param absoluteUrl the absolute URL of the resource that will be fetched.
@@ -70,12 +87,15 @@ function fetchResource(absoluteUrl, protocol, options) {
                 };
             }
         }
+        // Creating a URL that will be displayed by the logger, shortening the
+        // absolute URL if it is too long for logging purposes.
+        const displayUrl = createShortenedUrl(absoluteUrl);
         // Logging the result of the fetch to the logger.
         if (response.status === true) {
-            logger_1.logger.log('ok', `Fetched (${response.statusCode}) => ${absoluteUrl}`, { depth: 1 });
+            logger_1.logger.log('ok', `Fetched (${response.statusCode}) => ${displayUrl}`, { depth: 1 });
         }
         else {
-            logger_1.logger.log('error', `Failed  (${response.statusCode}) => ${absoluteUrl}`, { depth: 1 });
+            logger_1.logger.log('error', `Failed  (${response.statusCode}) => ${displayUrl}`, { depth: 1 });
         }
         return response;
     });
