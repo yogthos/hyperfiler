@@ -1,6 +1,6 @@
 {
   "name": "hyperfiler",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Bundle web pages into single standalone HTML files.",
   "author": "ChowderMan",
   "license": "AGPLv3",
